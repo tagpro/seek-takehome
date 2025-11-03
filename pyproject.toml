@@ -1,0 +1,29 @@
+[project]
+name = "traffic-counter"
+version = "0.1.0"
+description = "A take home test implmementation for Seek's Traffic Counter test"
+readme = "README.md"
+authors = [
+    { name = "Jaspreet Singh", email = "6873201+tagpro@users.noreply.github.com" }
+]
+requires-python = ">=3.14"
+
+dependencies = [
+    "pytest>=8.4.2",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=1.18.2",
+    "ruff>=0.14.3",
+]
+
+[project.scripts]
+traffic_counter = "traffic_counter:main"
+
+[build-system]
+requires = ["uv_build>=0.9.7,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

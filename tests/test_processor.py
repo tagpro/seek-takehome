@@ -25,7 +25,6 @@ class TestTrafficProcessor:
         total_count = processor.get_total_count()
         assert total_count == expected_count
 
-
     @pytest.mark.parametrize(
         ["logs", "expected_daily_count"],
         [

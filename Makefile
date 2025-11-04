@@ -18,11 +18,11 @@ format:
 
 .phony: test
 test:
-	uv run pytest tests/ --ignore=tests/integration/
+	uv run pytest -vv tests/ --ignore=tests/integration/
 
 .phony: test-integration
 test-integration:
 	# runs only integration tests
-	uv run pytest tests/integration/
+	uv run pytest -vv tests/integration/
 
 

@@ -1,16 +1,17 @@
 from dataclasses import dataclass, field
+from datetime import datetime
 
 
-@dataclass
-class TrafficData:
+@dataclass(order=True)
+class TrafficLog:
     """
-    This is a simple data structure to hold traffic data.
-    Traffic data is a simple list of (timestamp, count) tuples.
+    This is a simple data structure to hold a single traffic entry.
+    It contains a timestamp and a count.
     """
-    data: list[tuple[str, int]] = field(default_factory=list)
 
-    def add_entry(self, timestamp: str, count: int):
-        self.data.append((timestamp, count))
+    timestamp: datetime
+    count: int = field(compare=False)
+
 
 class TrafficParser:
     """
@@ -23,10 +24,11 @@ class TrafficParser:
     Each line contains a timestamp and a count separated by space.
     It returns a TrafficData object, which contains the parsed data.
     """
-    def parse_file(self, file_path: str) -> TrafficData:
-        result: TrafficData = TrafficData()
-        with open(file_path, 'r') as f:
+
+    def parse_file(self, file_path: str) -> list[TrafficLog]:
+        result: list[TrafficLog] = []
+        with open(file_path, "r") as f:
             for line in f:
                 timestamp, count = line.strip().split()
-                result.add_entry(timestamp, int(count))
+                result.append(TrafficLog(datetime.fromisoformat(timestamp), int(count)))
         return result

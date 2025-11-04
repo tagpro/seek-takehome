@@ -23,9 +23,22 @@ To run unit tests, use the following command:
 ```bash
 make test
 ```
+## Running the Program
 
-To run integration tests, use:
+To run the traffic analysis program, use the following command:
 
 ```bash
-make test-integration
+make run file=path/to/your/input_file.txt
+```
+
+or
+
+```bash
+uv run traffic_counter -i path/to/your/input_file.txt
+```
+
+Example:
+
+```bash
+make run file=sample.txt
 ```

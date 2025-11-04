@@ -20,9 +20,6 @@ format:
 test:
 	uv run pytest -vv tests/ --ignore=tests/integration/
 
-.phony: test-integration
-test-integration:
-	# runs only integration tests
-	uv run pytest -vv tests/integration/
-
-
+.phony: run
+run:
+	uv run traffic_counter -i $(file)
